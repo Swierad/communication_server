@@ -3,15 +3,18 @@ from config import dbdata
 
 
 
-def db_connect(db):
+
+def db_connect(db='com_server'):
     try:
         # creating connection
         cnx = connect(user=dbdata['user'],
-                      password=dbdata['coderslab'],
-                      host=dbdata['localhost'],
-                      database=dbdata[db]
+                      password=dbdata['password'],
+                      host=dbdata['host'],
+                      database=dbdata['db']
                       )
+        cnx.autocommit = True
+
         print("Połączenie udane.")
-        cnx.close()
+        return cnx
     except OperationalError:
         print("Nieudane połączenie.")
