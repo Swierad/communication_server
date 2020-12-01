@@ -13,8 +13,6 @@ def db_connect(db='com_server'):
                       database=dbdata['db']
                       )
         cnx.autocommit = True
-
-        print("Połączenie udane.")
         return cnx
     except OperationalError:
         print("Nieudane połączenie.")
